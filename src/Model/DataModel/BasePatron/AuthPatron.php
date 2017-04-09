@@ -6,13 +6,18 @@ use NYPL\Starter\Model\ModelInterface\ReadInterface;
 use NYPL\Starter\Model\ModelTrait\SierraTrait\SierraReadTrait;
 
 /**
- * @SWG\Definition(title="Patron", type="object", required={"id"})
+ * @SWG\Definition(title="AuthPatron", type="object", required={"id"})
  */
-class Patron extends BasePatron implements ReadInterface
+class AuthPatron extends BasePatron implements ReadInterface
 {
-    const FIELDS = "id,updatedDate,createdDate,deletedDate,deleted,suppressed,names,barcodes,expirationDate,birthDate,emails,patronType,patronCodes,homeLibraryCode,message,blockInfo,addresses,phones,universityId,moneyOwed,fixedFields,varFields";
+    const FIELDS = "id,names,barcodes,emails";
 
     use SierraReadTrait;
+
+    public function getTimeoutSeconds()
+    {
+        return 3;
+    }
 
     /**
      * @param string|null $id

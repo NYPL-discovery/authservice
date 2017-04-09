@@ -3,7 +3,7 @@ namespace NYPL\Services\Controller;
 
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
-use NYPL\Services\Model\DataModel\BasePatron\Patron;
+use NYPL\Services\Model\DataModel\BasePatron\AuthPatron;
 use NYPL\Services\Model\Response\ErrorResponse\AuthErrorResponse;
 use NYPL\Services\Model\Response\SuccessResponse\TokenResponse;
 use NYPL\Services\Model\DecodedToken;
@@ -27,7 +27,7 @@ final class AuthController extends Controller
 
             $accessToken = new DecodedToken((array) $decoded);
 
-            $patron = new Patron();
+            $patron = new AuthPatron();
             $patron->addFilter(
                 new Filter(null, null, false, $accessToken->getSub())
             );
@@ -122,33 +122,33 @@ final class AuthController extends Controller
         return $this->getTokenResponse($token);
     }
 
-    /**
-     * @SWG\Get(
-     *     path="/v0.1/auth/patron/logins",
-     *     summary="Get a Patron's login state",
-     *     tags={"auth"},
-     *     operationId="getLogin",
-     *     consumes={"application/json"},
-     *     produces={"application/json"},
-     *     @SWG\Response(
-     *         response=200,
-     *         description="Successful operation",
-     *         @SWG\Schema(ref="#/definitions/TokenResponse")
-     *     ),
-     *     @SWG\Response(
-     *         response="401",
-     *         description="Invalid or expired token",
-     *         @SWG\Schema(ref="#/definitions/AuthErrorResponse")
-     *     ),
-     *     @SWG\Response(
-     *         response="500",
-     *         description="Generic server error",
-     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
-     *     )
-     * )
-     */
-    public function getLogin()
-    {
-        return $this->getTokenResponse($this->getAccessToken());
-    }
+//    /**
+//     * @SWG\Get(
+//     *     path="/v0.1/auth/patron/logins",
+//     *     summary="Get a Patron's login state",
+//     *     tags={"auth"},
+//     *     operationId="getLogin",
+//     *     consumes={"application/json"},
+//     *     produces={"application/json"},
+//     *     @SWG\Response(
+//     *         response=200,
+//     *         description="Successful operation",
+//     *         @SWG\Schema(ref="#/definitions/TokenResponse")
+//     *     ),
+//     *     @SWG\Response(
+//     *         response="401",
+//     *         description="Invalid or expired token",
+//     *         @SWG\Schema(ref="#/definitions/AuthErrorResponse")
+//     *     ),
+//     *     @SWG\Response(
+//     *         response="500",
+//     *         description="Generic server error",
+//     *         @SWG\Schema(ref="#/definitions/ErrorResponse")
+//     *     )
+//     * )
+//     */
+//    public function getLogin()
+//    {
+//        return $this->getTokenResponse($this->getAccessToken());
+//    }
 }

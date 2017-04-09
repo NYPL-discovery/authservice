@@ -12,7 +12,7 @@ Config::initialize(__DIR__ . '/config');
 
 $service = new Service();
 
-$service->get("/swagger", function (Request $request, Response $response) {
+$service->get("/api/v0.1/auth/swagger", function (Request $request, Response $response) {
     return SwaggerGenerator::generate(
         [__DIR__ . "/src"],
         $response
@@ -24,9 +24,9 @@ $service->get("/api/v0.1/auth/patron/tokens/{id}", function (Request $request, R
     return $controller->getToken($parameters["id"]);
 });
 
-$service->get("/api/v0.1/auth/patron/logins", function (Request $request, Response $response) {
-    $controller = new Controller\AuthController($request, $response, 600);
-    return $controller->getLogin();
-});
+//$service->get("/api/v0.1/auth/patron/logins", function (Request $request, Response $response) {
+//    $controller = new Controller\AuthController($request, $response, 600);
+//    return $controller->getLogin();
+//});
 
 $service->run();

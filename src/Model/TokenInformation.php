@@ -1,7 +1,7 @@
 <?php
 namespace NYPL\Services\Model;
 
-use NYPL\Services\Model\DataModel\BasePatron\Patron;
+use NYPL\Services\Model\DataModel\BasePatron\AuthPatron;
 use NYPL\Starter\Model;
 
 /**
@@ -17,7 +17,7 @@ class TokenInformation extends Model
 
     /**
      * @SWG\Property
-     * @var Patron
+     * @var AuthPatron
      */
     public $patron;
 
@@ -38,7 +38,7 @@ class TokenInformation extends Model
     }
 
     /**
-     * @return Patron
+     * @return AuthPatron
      */
     public function getPatron()
     {
@@ -46,7 +46,7 @@ class TokenInformation extends Model
     }
 
     /**
-     * @param Patron $patron
+     * @param AuthPatron $patron
      */
     public function setPatron($patron)
     {
