@@ -14,9 +14,12 @@ class AuthPatron extends BasePatron implements ReadInterface
 
     use SierraReadTrait;
 
+    /**
+     * @return int
+     */
     public function getTimeoutSeconds()
     {
-        return 3;
+        return 2;
     }
 
     /**
