@@ -19,7 +19,7 @@ class AuthPatron extends BasePatron implements ReadInterface
      */
     public function getTimeoutSeconds()
     {
-        return 2;
+        return 3;
     }
 
     /**
