@@ -1,4 +1,4 @@
-# NYPL Auth Service
+# NYPL Auth Service (Deprecated)
 
 This package is intended to be used as a Lambda-based Auth Service using the [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
 
