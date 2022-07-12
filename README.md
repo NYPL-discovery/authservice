@@ -1,5 +1,11 @@
 # NYPL Auth Service
 
+This app serves the following endpoint:
+
+`GET /v0.1/auth/patron/tokens/{token}`
+
+Given a patron's access token, this service validates the token and responds with the decoded token and certain other patron properties. The `token` param that is expected can be derived by decoding the patron's `nyplIdentityPatron` JWT encoded cookie and using the `.access_token` property contained therein. That value happens also to be a JWT token. The main consumer of this services is [dgx-header-component](https://github.com/NYPL/dgx-header-component/blob/68d89f1b35c7bd8ae6cf9f957387165af5be02df/src/utils/utils.js#L244), which uses this service to fetch patron properties for display.
+
 This package is intended to be used as a Lambda-based Auth Service using the [NYPL PHP Microservice Starter](https://github.com/NYPL/php-microservice-starter).
 
 This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/) (using the [Composer](https://getcomposer.org/) autoloader).
@@ -15,24 +21,6 @@ This package adheres to [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http
 ## Features
 
 ## Usage
-
-#### Basic Example
-
-Create an `index.php` with a `Service` object and your [Slim](http://www.slimframework.com/) routes:
-
-~~~~
-Config::initialize(__DIR__ . '/config');
-
-$service = new NYPL\Starter\Service();
-
-$service->get("/v0.1/bibs", function (Request $request, Response $response) {
-    $controller = new Controller\BibController($request, $response);
-    return $controller->getBibs();
-});
-~~~~
-
-Configure your web server to load `index.php` on all requests.
-See the `samples/service-config` directory for sample configuration files for an Apache `.htaccess` or Nginx `nginx.conf` installation.
 
 ### Swagger Documentation Generator
 
