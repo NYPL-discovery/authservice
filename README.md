@@ -1,3 +1,15 @@
+# Deprecated
+
+As of August 2024, this codebase and the relevant AWS Lambda has been decommissioned and will not be supported. The Platform API endpoint this app served was `/v0.1/patron/tokens/{token}` and will be removed. Please contact the NYPL LSP or Remediation teams with any questions.
+
+## Previous usage
+
+Searching within the `nypl` and `nypl-discovery` Github orgs, the [`nypl-header-app`](https://github.com/NYPL/nypl-header-app) contains code that hits the endpoint this service supports to display a patron's name. This feature was removed so the code is not active. If we ever add this feature back, we'll revisit how to best support it through a backend service.
+
+Note: the `dgx-header-component` repo flagged below is deprecated and not supported.
+
+-----
+
 # NYPL Auth Service
 
 This app serves the following endpoint:
